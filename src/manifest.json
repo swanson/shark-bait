@@ -17,7 +17,7 @@
     }
   ],
   "web_accessible_resources": [
-    "underscore.min.map"
+    "underscore-min.map"
   ],
   "icons": {
     "128": "logo-128.png"
