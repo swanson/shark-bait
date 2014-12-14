@@ -14,22 +14,16 @@ colorCode = function(username, wins) {
   $row.parents(".lobbyitem").css("background-color", color);
   $row.parents("a").attr("data-shark", "true");
   
-  var $userRow = $row.parents(".user").last();
-  var $details = $userRow.find(".sharkdetails");
-  
-  if(!$details.length) {
-    $details = $("<small class='sharkdetails'></small>").appendTo($userRow);
-  }
+  var $userRows = $row.parents(".user").each(function() {
+    var $row = $(this);
+    var $details = $row.find(".sharkdetails");
+    
+    if(!$details.length) {
+      $details = $("<small class='sharkdetails'></small>").appendTo($row);
+    }
 
-  $details.text(" (" + wins + ")");
-};
-
-sumAll = function(selector) {
-  var sum = 0;
-  $(selector).each(function() {
-    sum += Number($(this).text());
+    $details.text(" (" + wins + ")");
   });
-  return sum;
 };
 
 lookupWins = function(username) {
@@ -38,8 +32,7 @@ lookupWins = function(username) {
 
 extractWins = function(username) {
   $.ajax("https://www.fanduel.com/users/" + username).done(function(data) {
-    var winColumns = $(data).find("table td");
-    var winCount = sumAll(winColumns);
+    var winCount = Number($(data).find("table td").first().text());
     localStorage.setItem("wins:" + username, winCount);
     colorCode(username, winCount);
   });
