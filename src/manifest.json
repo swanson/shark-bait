@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "SharkBait - FanDuel H2H Matchup Finder",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Find more favorable H2H matchups on FanDuel by avoiding sharks",
   "content_scripts": [
     {
