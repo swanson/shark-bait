@@ -1,3 +1,5 @@
+HOVER_ENABLED = true;
+
 colorCode = function(username, wins) {
   var color = "";
 
@@ -51,6 +53,15 @@ checkMatchups = function() {
     });
 };
 
+showHoverStats = function(el, username) {
+  $(el).parent().parent().append("<div class='shark-bait-hover'></div>");
+  $(".shark-bait-hover").load("https://www.fanduel.com/users/" + username + " table");
+};
+
+hideHoverStats = function() {
+  $(".shark-bait-hover").remove();
+};
+
 $(document).ready(function() {
   checkMatchups();
 
@@ -59,13 +70,17 @@ $(document).ready(function() {
 });
 
 $(document).on("mouseenter", "tr.lobbyitem div.user a", function() {
-    var username = $(this).text();
+  var username = $(this).text();
+  
+  if (HOVER_ENABLED) {
+    showHoverStats(this, username);
+  }
 
-    var wins = lookupWins(username);
+  extractWins(username);
+});
 
-    if (wins === null) {
-      extractWins(username);
-    } else {
-      colorCode(username, wins);
-    }
+$(document).on("mouseleave", "tr.lobbyitem div.user a", function() {
+  if (HOVER_ENABLED) {
+    hideHoverStats();
+  }
 });
