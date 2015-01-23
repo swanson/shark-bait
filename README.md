@@ -1,5 +1,5 @@
-# SharkBait
-Chrome extension to help find more favorable H2H matchups on [FanDuel][ref].
+# RotoGrinders FanDuel Matchup Finder
+Chrome extension to help find more favorable H2H matchups on [FanDuel][ref]. Now combined with SwedishFishy's SharkBait extension.  
 
 [Install via Chrome Webstore][cws]
 
