@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "SharkBait - FanDuel H2H Matchup Finder",
+  "name": "RotoGrinders - FanDuel H2H Matchup Finder",
   "version": "0.0.4",
   "description": "Find more favorable H2H matchups on FanDuel by avoiding sharks",
   "content_scripts": [
